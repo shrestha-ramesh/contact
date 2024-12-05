@@ -107,7 +107,7 @@ public class ContactInformationServiceStepDefinitions {
     public void the_person_details_should_be_returned() {
         // Write code here that turns the phrase above into concrete actions
         System.out.println(sharedData.persons);
-        Assertions.assertNull(sharedData.persons);
+        Assertions.assertNotNull(sharedData.persons);
     }
     @And("the details should include contact number, address and occupation")
     public void the_details_should_include_contact_number_address_and_occupation() {

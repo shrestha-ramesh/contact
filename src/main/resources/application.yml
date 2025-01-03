@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: contact
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          redis:
+            connection: DEBUG
+#        web: DEBUG
+#    mongodb:
+#      uri: mongodb+srv://shrestha6941:cMnGscaBCGkvvyJh@cluster0.rjoky.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+#      database: peopledb

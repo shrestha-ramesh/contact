@@ -21,6 +21,8 @@ public class ContactInformationService {
     private ExecutorService executor;
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
+
+    private ServiceImp serviceImp;
     @PreDestroy
     public void shutDownExecutorService(){
         executor.shutdown();
@@ -81,15 +83,15 @@ public class ContactInformationService {
 
     public void savePersonDetails(Persons persons) {
         for(Person eachPerson : persons.getPersonList()){
+            System.out.println(eachPerson);
             setDataToRedis(String.valueOf(eachPerson.getId()), eachPerson,3000l);
         }
     }
     public void setDataToRedis(String key, Object o, Long ttl){
         try {
             redisTemplate.opsForValue().set(key, o, ttl, TimeUnit.SECONDS);
-            System.out.println("its save");
         }catch (Exception e){
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
     }
     public Person getSave(String id) {
@@ -101,7 +103,8 @@ public class ContactInformationService {
 
         try {
             Object o = redisTemplate.opsForValue().get(key);
-            return (T) o;
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(o.toString(), DTOClass);
         }catch (Exception e){
             e.getMessage();
             return null;

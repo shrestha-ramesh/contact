@@ -5,6 +5,8 @@ import com.contactinfromation.contact.model.*;
 import com.contactinfromation.contact.service.ContactInformationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -13,9 +15,11 @@ import java.util.List;
 @RestController
 @Tag(name = "Contact Information Management System",
         description = "Operations pertaining to contact information in the system")
+//@Log4j2
 public class ContactInformationController {
     private ContactInformationService contactInformationService;
 
+    private static final Logger logger = LogManager.getLogger(ContactInformationController.class);
     public ContactInformationController(ContactInformationService contactInformationService){
         this.contactInformationService = contactInformationService;
     }
@@ -24,6 +28,7 @@ public class ContactInformationController {
             description = "Retrieve details of persons")
     @GetMapping("/person/details")
     public Persons getPersonDetail(@RequestParam String firstName){
+
         long startTime = System.currentTimeMillis();
         Persons personDetailsList = contactInformationService.getPersonDetail();
         long endTime = System.currentTimeMillis();
@@ -47,6 +52,8 @@ public class ContactInformationController {
             description = "Retrieve details of persons")
     @GetMapping("/person/details/{lastName}")
     public Persons getPersonDetailPath(@PathVariable String lastName){
+        logger.info("Hello this is test");
+
         long startTime = System.currentTimeMillis();
         Persons personDetailsList = contactInformationService.getPersonDetail();
         long endTime = System.currentTimeMillis();

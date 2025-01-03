@@ -1,7 +1,6 @@
 package com.contactinfromation.contact.model;
 
 import lombok.*;
-
 import java.util.List;
 
 
@@ -10,7 +9,8 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class Person {
-    int id;
+
+    private int id;
     private String firstName;
     private String lastName;
     private List<PersonAddress> personAddress;

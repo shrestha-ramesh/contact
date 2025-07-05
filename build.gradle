@@ -47,3 +47,7 @@ tasks.named('test') {
 //	options.compilerArgs << "-Xlint:unchecked"
 //}
 
+jar {
+	archiveBaseName.set("789654${System.getenv("BUILD_NUMBER") ?: "dev"}")
+	archiveVersion.set("")
+}

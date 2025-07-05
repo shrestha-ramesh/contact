@@ -9,5 +9,5 @@ Feature: Contact Information Management System
   Scenario: Retrieve details of persons by path variable
     Given the server is running
     When I send a GET request to "/person/details/Shrestha"
-    Then the response status should be 200
+    Then the response status should be 100
     And the response should contain person details with last name "Shrestha"

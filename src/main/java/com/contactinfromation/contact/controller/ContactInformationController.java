@@ -53,7 +53,7 @@ public class ContactInformationController {
     @GetMapping("/person/details/{lastName}")
     public Persons getPersonDetailPath(@PathVariable String lastName){
         logger.info("Hello this is test");
-
+        logger.infor("This is anoterh test");
         long startTime = System.currentTimeMillis();
         Persons personDetailsList = contactInformationService.getPersonDetail();
         long endTime = System.currentTimeMillis();
